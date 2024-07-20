@@ -19,7 +19,7 @@ inputbox.addEventListener('keypress', (event) => {
 function GetWaetherReport(city) {
     fetch(`${weatherapi.baseurl}?q=${city}&appid=${weatherapi.key}&units=metric`)
         .then(weather => {
-            return weather.json();
+            return weather.json();//json is a datatype which stores key value pair.
         }).then(ShowWeatherReport);
 }
 
@@ -27,7 +27,7 @@ function GetWaetherReport(city) {
 function ShowWeatherReport(weather) {
     console.log(weather);
     let city = document.getElementById('city');
-    city.innerText = `${weather.name}, ${weather.sys.country}`;
+    city.innerText = `${weather.name}, ${weather.sys.country}`;//.sys.country is a key in json which has a value, we r accessing the value of this key
 
     let temperature = document.getElementById('temp');
     temperature.innerHTML = `${Math.round(weather.main.temp)}&deg;C`
